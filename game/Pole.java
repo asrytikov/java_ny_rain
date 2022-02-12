@@ -16,8 +16,12 @@ public class Pole extends JPanel{
 	private Image shapka;
 	private Image fon;
 	public int x=400;
+	private int slogn;
+	private Podar[] podarki;
 	
-	public Pole() {
+	public Pole(int slogn) {
+		
+		this.slogn = slogn;
 		
 		try {
 			fon = ImageIO.read(new File("C:\\java\\fon.png"));

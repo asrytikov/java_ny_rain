@@ -30,14 +30,27 @@ public class Podar {
 	
 	public void down() {
 		
+		if (act == true) {
+			y += 6;
+		}
+		
+		if ((y+img.getHeight(null))>=470) {
+			timerUpdate.stop();
+		}
+		
 	}
 	
 	public void start() {
-		
+		timerUpdate.start();
+		y = 0;
+		x = (int)(Math.random()*700);
+		act = true;
 	}
 	
 	public void paint(Graphics gr) {
-		
+		if (act) {
+			gr.drawImage(img, x, y, null);
+		}
 	}
 
 }

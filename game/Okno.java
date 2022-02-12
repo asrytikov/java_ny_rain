@@ -45,12 +45,12 @@ public class Okno extends JFrame {
 		
 	}
 	
-	public Okno() {
+	public Okno(int slogn) {
 		
 		addKeyListener(new myKey());
 		setFocusable(true);
 		
-		pole = new Pole();
+		pole = new Pole(slogn);
 		Container cont = getContentPane();
 		cont.add(pole);
 		

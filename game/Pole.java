@@ -12,7 +12,7 @@ import javax.swing.Timer;
 
 public class Pole extends JPanel{
 	
-	public Timer timerDraw;
+	public Timer timerDraw, timerUpdate;
 	private Image shapka;
 	private Image fon;
 	public int x=400;
@@ -33,7 +33,17 @@ public class Pole extends JPanel{
 		} catch (Exception e) {
 		}
 		
+		podarki = new Podar[7];
 		
+		for (int i = 0; i < podarki.length; i++) {
+			try {
+				
+				podarki[i] = new Podar(ImageIO.read(new File("C:\\java\\p"+i+".png")));
+				
+			} catch (Exception e) {
+				// TODO: handle exception
+			}
+		}
 		
 		timerDraw = new Timer(50, new ActionListener() {
 			
@@ -45,11 +55,40 @@ public class Pole extends JPanel{
 		});
 		
 		timerDraw.start();
+		
+		timerUpdate = new Timer(3000, new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				// TODO Auto-generated method stub );
+				updateStart();
+			}});
+		timerUpdate.start();
 	}
 	
 	public void paintComponent(Graphics gr) {
 		gr.drawImage(fon, 0, 0, null);
 		gr.drawImage(shapka, x, 465, null);
+		
+		for (int i = 0; i < podarki.length; i++) {
+			podarki[i].paint(gr);
+		}
+	}
+	
+	private void updateStart() {
+		int kol = 0;
+		
+		for (int i = 0; i < podarki.length; i++) {
+			if (podarki[i].act==false) {
+				if (kol<slogn) {
+					podarki[i].start();
+					break;
+				}
+			}
+			else {
+				kol++;
+			}
+		}
 	}
 
 }

@@ -15,7 +15,7 @@ public class Podar {
 	
 	
 	public Podar(Image img) {
-		timerUpdate = new Timer(500, new ActionListener() {
+		timerUpdate = new Timer(100, new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
